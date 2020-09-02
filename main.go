@@ -473,7 +473,7 @@ func generate() {
 			"TableInfo":       tableInfo,
 		}
 
-		modelFile := filepath.Join(modelDir, inflection.Singular(tableName)+".go")
+		modelFile := filepath.Join(modelDir, "m_"+inflection.Singular(tableName)+".go")
 		writeTemplate("model", ModelTmpl, modelInfo, modelFile, *overwrite, true)
 
 		if *restApiGenerate {
@@ -483,7 +483,7 @@ func generate() {
 
 		if *daoGenerate {
 			//write dao
-			outputFile := filepath.Join(daoDir, inflection.Singular(tableName)+".go")
+			outputFile := filepath.Join(daoDir, "d_"+inflection.Singular(tableName)+".go")
 			writeTemplate("dao", DaoTmpl, modelInfo, outputFile, *overwrite, true)
 		}
 	}
